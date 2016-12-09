@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<properties url="file:///d:/wblogconf/mybatis-ibator-conf.properties" />
+	<classPathEntry location="${mysql.jar.path}" />
+	<context id="context1" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/wblog?useUnicode=true&amp;characterEncoding=UTF-8"
+			userId="root" password="root" />
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+			<!-- number(默认为38位),当长度超过18位时无法强制转换decimal 默认false，把JDBC DECIMAL 和 NUMERIC 
+				类型解析为 Integer true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal -->
+		</javaTypeResolver>
+		
+		<javaModelGenerator targetPackage="cn.magicstudio.mblog.model"
+			targetProject="ms-mblog-model">
+			<property name="rootInterface" value="java.io.Serializable"/>
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="ms-mblog-repo/src/main/resources" />
+		<javaClientGenerator targetPackage="cn.magicstudio.mblog.dal.database"
+			targetProject="ms-mblog-repo" type="XMLMAPPER">
+			<property name="interfaceExtendSupInterface"
+				value="com.yougou.logistics.base.dal.database.BaseCrudMapper" />
+			<property name="enableInterfaceSupInterfaceGenericity"
+				value="false" />
+			<property name="exclusionsMethods"
+				value="countByQuery,deleteByQuery,deleteByPrimaryKey,insert,insertSelective,selectByQuery,selectByQueryWithBLOBs,selectByPrimaryKey,selectCount,selectByPage,updateByQuery,updateByQueryWithBLOBs,updateByPrimaryKeySelective,updateByPrimaryKeyWithBLOBs" />
+		</javaClientGenerator>
+
+		<sqlMapConfigFileAppend targetPackage="META-INF"
+			targetProject="ms-mblog-model/src/main/resources" confileFileName="mybatis-mblog-dal-config.xml"
+			confileFilePackagePath="mapper" />
+
+		
+		<javaServiceGenerator targetPackage="cn.magicstudio.mblog.service.interface"
+			targetProject="ms-mblog-service-interface" interfaceExtendSupInterface="com.yougou.logistics.base.service.BaseCrudService"
+			enableInterfaceSupInterfaceGenericity="false"
+			extendSupClass="com.yougou.logistics.base.service.BaseCrudServiceImpl"
+			enableSupClassGenericity="false" />
+<!-- 
+		<javaManagerGenerator targetPackage="cn.wonhigh.retail.fas.manager"
+			targetProject="retail-fas-manager" interfaceExtendSupInterface="com.yougou.logistics.base.manager.BaseCrudManager"
+			enableInterfaceSupInterfaceGenericity="false"
+			extendSupClass="com.yougou.logistics.base.manager.BaseCrudManagerImpl"
+			enableSupClassGenericity="false" />
+ -->
+		<javaControllerGenerator targetPackage="cn.magicstudio.mblog.web.controller"
+			targetProject="ms-mblog-web"
+			extendSupClass="com.yougou.logistics.base.web.controller.BaseCrudController"
+			enableSupClassGenericity="true" />
+		<!-- <table schema="dev1" tableName="logistics_base" domainObjectName="LogisticsBase" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false"> <columnOverride 
+			column="BASE_ID" javaType="Long"></columnOverride> </table> -->
+
+		<tableSetting isSchema="true" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+			<prop name="replaceTablePrefix">
+				<list>
+					<prefix name="" value="" />
+				</list>
+			</prop>
+			<!-- 忽略schema，避免在xml中出现schema.表名 -->
+			<prop name="ignoreGeneratorSchema" value="true" />
+		</tableSetting>
+	</context>
+</generatorConfiguration>

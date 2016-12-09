@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.magicstudio.mblog.dal.database.ManagersMapper" >
+  <resultMap id="BaseResultMap" type="cn.magicstudio.mblog.model.Managers" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="role_id" property="roleId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="password_salt" property="passwordSalt" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, shop_id, role_id, user_name, password, password_salt, create_date, remark, real_name
+  </sql>
+  <sql id="condition" >
+    <if test="null!=params" >
+      <if test="null!=params.queryCondition and ''!=params.queryCondition" >
+        ${params.queryCondition}
+      </if>
+    </if>
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM managers
+    WHERE id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectCount" resultType="java.lang.Integer" >
+    SELECT COUNT(1) as s FROM managers WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <select id="selectByPage" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM managers WHERE 1=1 
+    <include refid="condition" />
+    <if test="orderByField != null and ''!=orderByField" >
+      ORDER BY ${orderByField}
+      <if test="orderByField" >
+        ${orderBy}
+      </if>
+    </if>
+     LIMIT #{page.startRowNum} ,#{page.pageSize} 
+  </select>
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+     FROM managers WHERE 1=1 
+    <include refid="condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    DELETE FROM managers
+    WHERE id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByPrimarayKeyForModel" parameterType="cn.magicstudio.mblog.model.Managers" >
+    DELETE FROM managers
+    WHERE id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.magicstudio.mblog.model.Managers" >
+    INSERT INTO managers (id, shop_id, role_id, 
+      user_name, password, password_salt, 
+      create_date, remark, real_name
+      )
+    VALUES (#{id,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, 
+      #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{passwordSalt,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.magicstudio.mblog.model.Managers" >
+    INSERT INTO managers
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="passwordSalt != null" >
+        password_salt,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordSalt != null" >
+        #{passwordSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.magicstudio.mblog.model.Managers" >
+    UPDATE managers
+    <set >
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordSalt != null" >
+        password_salt = #{passwordSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    WHERE id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.magicstudio.mblog.model.Managers" >
+    UPDATE managers
+    SET shop_id = #{shopId,jdbcType=BIGINT},
+      role_id = #{roleId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      password_salt = #{passwordSalt,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR}
+    WHERE id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
