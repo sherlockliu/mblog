@@ -51,6 +51,10 @@
 	<modules>
 		<module>ms-mblog-framework</module>
 		<module>ms-mblog-model</module> 
+		<module>ms-mblog-core</module>
+		<module>ms-mblog-cache</module>
+		<module>ms-mblog-base-framework</module>
+		<module>ms-mblog-data</module> 
 		<module>ms-mblog-repo</module>
 		<module>ms-mblog-service</module>
 		<module>ms-mblog-service-interface</module>

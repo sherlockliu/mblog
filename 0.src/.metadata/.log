@@ -1,0 +1,22 @@
+!SESSION 2016-12-12 13:43:24.349 -----------------------------------------------
+eclipse.buildId=M20120208-0800
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui.workbench 2 0 2016-12-12 13:43:32.816
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2016-12-12 13:43:32.816
+!MESSAGE Conflict for 'net.harawata.mybatipse.ToggleNature':
+HandlerActivation(commandId=net.harawata.mybatipse.ToggleNature,
+	handler=net.harawata.mybatipse.nature.ToggleNatureCommand,
+	expression=,sourcePriority=0)
+HandlerActivation(commandId=net.harawata.mybatipse.ToggleNature,
+	handler=net.harawata.mybatipse.nature.ToggleNatureCommand,
+	expression=,sourcePriority=0)
+
+!ENTRY org.eclipse.scout.sdk 1 0 2016-12-12 13:43:40.234
+!MESSAGE org.eclipse.osgi.framework.internal.core.BundleContextImpl$1.run(BundleContextImpl.java:711)
+	Starting SCOUT SDK Plugin.

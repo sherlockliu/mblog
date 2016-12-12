@@ -16,9 +16,9 @@
   </properties>
  	<dependencies>
 		<dependency>
-			<groupId>cn.wonhigh.retail</groupId>
-			<artifactId>retail-backend-dal</artifactId>
-			<version>${retail-backend-version}</version>
+			<groupId>cn.magicstudio.java</groupId>
+			<artifactId>ms-mblog-data</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>cn.magicstudio.java</groupId>

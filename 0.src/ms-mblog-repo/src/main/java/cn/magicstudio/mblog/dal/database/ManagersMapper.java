@@ -1,8 +1,9 @@
 package cn.magicstudio.mblog.dal.database;
 
 import java.util.List;
+
+import cn.magicstudio.mblog.data.base.database.BaseCrudMapper;
 import cn.magicstudio.mblog.model.Managers;
-import com.yougou.logistics.base.dal.database.BaseCrudMapper;
 
 /**
  * 请写出类的用途 
